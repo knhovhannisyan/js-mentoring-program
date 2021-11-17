@@ -9,9 +9,8 @@
  * write function that will do sum for two numbers
  *
  */
-function sum(a, b) {
+let sum = (a, b) => a + b;
 
-}
 
 /**
  * write function that returns firstName and lastName of a given object
@@ -21,7 +20,7 @@ function sum(a, b) {
  * }
  */
 function getFullName(object) {
-
+	return object.firstName + " " + object.lastName;
 }
 
 /**
@@ -29,7 +28,7 @@ function getFullName(object) {
  * true if odd, false if even
  */
 function isOdd(n) {
-
+	return n % 2 == 1
 }
 
 /**
@@ -38,7 +37,14 @@ function isOdd(n) {
  * console.log(getShortest(["one", "two", "three"])) // one
  */
 function getShortest(wordArray) {
-
+	let minLength = wordArray[0];
+	for(let i = 0; i < wordArray.length; i++){
+		if(wordArray[i].length < minLength.length){
+			minLength = wordArray[i];
+		}
+	}
+	console.log(minLength)
+	return minLength;
 }
 
 /**
@@ -47,7 +53,7 @@ function getShortest(wordArray) {
  * console.log(getGoogle(5)) // gooooogle
  */
 function getGoogle(n) {
-
+	return "g" + "o".repeat(n) + "gle";
 }
 
 /**
@@ -61,8 +67,12 @@ function getGoogle(n) {
  *    age: 42
  * }
  */
-function getUser(firstName, lastName, age) {
-
+function getUser(firstName = null, lastName = null, age = null) {
+	return {
+		"firstName": firstName,
+		"lastName": lastName,
+		"age": age,
+	}
 }
 
 /**
@@ -72,7 +82,11 @@ function getUser(firstName, lastName, age) {
  */
 
 function getTotalPath(path) {
-
+	let total = 0;
+	for(let i = 0; i < path.length; i++){
+		total += path[i].distance;
+	}
+	return total;
 }
 
 /**
@@ -89,7 +103,9 @@ function getTotalPath(path) {
 
 function discountFunction(percentage) {
 
-	return function (amount) {};
+	return function (amount) {
+		return amount - amount * percentage / 100;
+	};
 }
 
 /**
@@ -106,11 +122,14 @@ const myObject = {
 	friends: ['Mike', 'Alan', 'Daniel'],
 	keys() {
 		//write your code here
+		for(let key in myObject){
+			console.log(key)
+		}
 	},
 	call() {
 		//write your code here
+		return "My name is" +  " " + this.name + " " + this.lastName + " " + "and I am" + " " + this.age + " " + "years old. My best friend is" + " " + this.friends[2];
 	}
-
 };
 
 module.exports = {
